@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django_otp.plugins.otp_totp',
     'two_factor',
     'emergency',
+    'tastypie',
 )
 
 MIDDLEWARE_CLASSES = (

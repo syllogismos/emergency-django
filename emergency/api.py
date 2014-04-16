@@ -1,6 +1,7 @@
 
 from tastypie.resources import ModelResource
 from tastypie import fields
+from tastypie.authentication import SessionAuthentication
 
 from emergency.models import Hospital
 
@@ -11,6 +12,7 @@ class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
 	resource_name = 'hospital_admin'
+        authentication = SessionAuthentication()
 
 
 class HospitalResource(ModelResource):
@@ -18,3 +20,4 @@ class HospitalResource(ModelResource):
     class Meta:
 	queryset = Hospital.objects.all()
 	resource_name = 'hospital'
+        authentication = SessionAuthentication()

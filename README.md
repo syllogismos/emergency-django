@@ -35,7 +35,15 @@ this command will ask to create a super user if run for the first time
 
 > python manage.py createsuperuser --username=test --email=test@test.com
 
-5) You can populate the hospital table from the csv file using the temp.py script
+5) You can populate the hospital table from the csv file using the temp.py script, this has to be done only after the above syncdb command
+
+> python manage.py shell
+
+> from temp import populate
+
+> populate()
+
+
 
 
 5) deploy

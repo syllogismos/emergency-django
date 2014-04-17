@@ -4,6 +4,7 @@ from django.views.generic import RedirectView
 
 from emergency.api import HospitalResource
 from emergency.api import UserResource
+from emergency.api import CheckInResource 
 
 from tastypie.api import Api
 
@@ -13,6 +14,7 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(UserResource())
 v1_api.register(HospitalResource())
+v1_api.register(CheckInResource())
 
 urlpatterns = patterns('',
     # Examples:

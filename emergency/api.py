@@ -9,7 +9,8 @@ from emergency.models import Hospital, Check_in
 
 from django.contrib.auth.models import User
 
-
+## except for get requests, everything else is giving a not authorized error..
+## patch, post, put, giving 401, 405 errors
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()

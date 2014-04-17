@@ -3,8 +3,46 @@
 {% block content %}
 {% if user.is_active and user.is_staff %}
   {% if not user.is_superuser %}
-    <h1>{% block info %} information that must be available to the hospital admin {% endblock %} </h1>
-<script> username = '{{user.username}}'; </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script> 
+  username = '{{user.username}}'; 
+  hospital_request = $.ajax({
+    url: '/api/v1/hospital/?hospital_admin__username='+username,
+    type: 'GET',
+    dataType: 'json',
+    processData: false
+  }).done(function(data) {
+    hospital = data.objects[0];
+    $("#hospital_name").html("Hospital Name: "+hospital.hospital_name);
+    $("#hospital_address").html("Hospital Address: "+hospital.address);
+    $("#hospital_phone_number").html("Phone Number: "+hospital.phone_number);
+    $("#hospital_city").html("City: "+hospital.city);
+    $("#hospital_state").html("State: "+hospital.state);
+    $("#hospital_wait_time").html("Wait time: "+hospital.door_to_diagnostic_eval);
+  });
+
+  check_in_request = $.ajax({
+    url: '/api/v1/check_in/?hospitaladmin='+username,
+    type: 'GET',
+    dataType: 'json',
+    processData: false
+  }).done(function(data) {
+    check_ins = data.objects;
+    $("#dumpp").html(JSON.stringify(check_ins));
+
+  });
+
+
+</script>
+<p> Hospital Details </p>
+<p id="hospital_name"></p>
+<p id="hospital_address"></p>
+<p id="hospital_phone_number"></p>
+<p id="hospital_city"></p>
+<p id="hospital_state"></p>
+<p id="hospital_wait_time"></p>
+<p> Check Ins dump </p>
+<p id="dumpp"></p>
   {% endif %}
 {% else %}
 <h1>{% block title %}{% trans "Login"  %}{% endblock %}</h1>

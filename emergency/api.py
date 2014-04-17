@@ -5,7 +5,7 @@ from tastypie.authentication import SessionAuthentication
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 from tastypie.authorization import Authorization
 
-from emergency.models import Hospital
+from emergency.models import Hospital, Check_in
 
 from django.contrib.auth.models import User
 
@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
-	resource_name = 'hospital_admin'
+	resource_name = 'user'
 	excludes = ['email', 'password', 'is_active', 'is_staff', 'is_superuser']
 	filtering = {
 	    'username': ALL,
@@ -36,3 +36,14 @@ class HospitalResource(ModelResource):
         }
 	allowed_methods = ['get', 'put', 'patch']
 	authorization = Authorization()
+
+class CheckInResource(ModelResource):
+    checked_in_user = fields.ForeignKey(UserResource, 'checked_in_user')
+    hospital = fields.ForeignKey(HospitalResource, 'hospital')
+    class Meta:
+ 	queryset = Check_in.objects.all()
+ 	resource_name = 'check_in'
+ 	authentication = SessionAuthentication()
+        filtering = {
+            'hospital_admin' : ['exact']
+        }

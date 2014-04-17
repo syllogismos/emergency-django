@@ -30,3 +30,4 @@ class Check_in(models.Model):
     hospital = models.ForeignKey(Hospital)
     checked_in_user = models.ForeignKey(User)
     pub_date = models.DateTimeField('date published')
+    hospital_admin = models.CharField(max_length=20)

@@ -5,7 +5,7 @@ Er Wait time application
 
 
 todo:
-
+====
 
 1) Must be python 2.7, the default python installation on ec2 linux instances is 2.6
 
@@ -113,3 +113,39 @@ hospital example:
     "state": "AL",
     "zip_code": "36301"
 }
+
+
+
+
+First Deliverable Update:
+========================
+
+Here is the url:
+
+http://ec2-54-196-92-53.compute-1.amazonaws.com:8000/account/login/
+ 
+web admin: username: ec2-user, pwd: test
+
+hospital admin: username: hospitaladmin, pwd: test
+
+normal users: patient1, patient2, patient3, pwd: test
+
+Hospitals details were obtained from the web site you provided to fill the Hospital table
+
+By default, the web admin will be the hospital admin, to all the hospitals.
+
+The web admin can edit the hospital details, while editing the hospital details, he can create a new hospital admin.
+
+The web admin must mark the user as 'staff' to make him a hospital admin.
+
+The web admin, can look, change, edit, delete all the objects in all the tables available in the webportal.
+
+The hospital admin and web admin can enable two factor authentication using google qr code authenticators available in various smartphones.
+
+The hospital admin, can only change the details of his own hospital, in his admin panel. he can update various wait times that are available. url: /admin/
+
+When the hospital admin logs in he will be able to see the details of his hospital, and all the check ins to his hospital. He can update the hospital details by clicking on the update button.
+
+For testing purposes, you can create sample check ins, by logging in as web admin, go to the check_in table, and create new checkins.
+
+Some of the api, that we will be using to build the phone applications, their details are available on the readme.md on github.

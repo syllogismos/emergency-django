@@ -29,14 +29,19 @@
     processData: false
   }).done(function(data) {
     check_ins = data.objects;
-    $("#dumpp").html(JSON.stringify(check_ins));
+    for (var i = 0; i < check_ins.length; i++) {
+	$("#checkins").append(
+	    "<p> Patient Username: "+check_ins[i].checked_in_user.username+"</p>"+
+            "<p> Patient email: "+check_ins[i].checked_in_user.email+"</p>"+
+            "<p> Check in time: "+ check_ins[i].pub_date+"</p><hr>");
+    }
 
   });
 
 
 </script>
 <hr>
-<p><strong> Hospital Details </strong></p>
+<p><h1> Hospital Details: </h1></p>
 <p id="hospital_name"></p>
 <p id="hospital_address"></p>
 <p id="hospital_phone_number"></p>
@@ -46,8 +51,10 @@
         <button name="update-wait-time-btn" value="Update Wait Time"
                 class="btn btn-default btn-block" type="submit"><a id="hospital_update_link" href = "" >Update Wait Time</a></button>
 <hr>
-<p> <strong> Check Ins dump</strong>  </p>
+<p> <h1> Check Ins:</h1>  </p>
 <p id="dumpp"></p>
+<div id = "checkins">
+</div>
   {% endif %}
 {% else %}
 <h1>{% block title %}{% trans "Login"  %}{% endblock %}</h1>

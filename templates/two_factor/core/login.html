@@ -19,6 +19,7 @@
     $("#hospital_city").html("City: "+hospital.city);
     $("#hospital_state").html("State: "+hospital.state);
     $("#hospital_wait_time").html("Wait time: "+hospital.door_to_diagnostic_eval);
+    $("#hospital_update_link").attr("href", "/admin/emergency/hospital/"+hospital.id);
   });
 
   check_in_request = $.ajax({
@@ -34,14 +35,18 @@
 
 
 </script>
-<p> Hospital Details </p>
+<hr>
+<p><strong> Hospital Details </strong></p>
 <p id="hospital_name"></p>
 <p id="hospital_address"></p>
 <p id="hospital_phone_number"></p>
 <p id="hospital_city"></p>
 <p id="hospital_state"></p>
 <p id="hospital_wait_time"></p>
-<p> Check Ins dump </p>
+        <button name="update-wait-time-btn" value="Update Wait Time"
+                class="btn btn-default btn-block" type="submit"><a id="hospital_update_link" href = "" >Update Wait Time</a></button>
+<hr>
+<p> <strong> Check Ins dump</strong>  </p>
 <p id="dumpp"></p>
   {% endif %}
 {% else %}

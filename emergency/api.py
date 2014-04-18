@@ -15,7 +15,7 @@ class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
 	resource_name = 'user'
-	excludes = ['email', 'password', 'is_active', 'is_staff', 'is_superuser']
+	excludes = ['password', 'is_active', 'is_staff', 'is_superuser']
 	filtering = {
 	    'username': ALL,
 	}
@@ -39,7 +39,7 @@ class HospitalResource(ModelResource):
 	authorization = Authorization()
 
 class CheckInResource(ModelResource):
-    checked_in_user = fields.ForeignKey(UserResource, 'checked_in_user')
+    checked_in_user = fields.ForeignKey(UserResource, 'checked_in_user', full=True)
     hospital = fields.ForeignKey(HospitalResource, 'hospital')
     class Meta:
  	queryset = Check_in.objects.all()

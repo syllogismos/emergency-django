@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 def populate():
     defaultUser = User.objects.get(pk=1)
-    edt = open('edtfinal.csv', 'r')
+    edt = open('edtfinal_location.csv', 'r')
     edtcsv = csv.reader(edt)
     header = edtcsv.next()
     try:
@@ -33,6 +33,9 @@ def populate():
                     door_to_diagnostic_eval = hosp[12],
                     median_time_to_pain_med = hosp[13],
                     head_ct_results         = hosp[14],
+                    address_from_google     = hosp[15],
+                    latitude                = hosp[16],
+                    longitude               = hosp[17],
                     )
             e.save()
     except:

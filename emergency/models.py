@@ -23,6 +23,9 @@ class Hospital(models.Model):
     door_to_diagnostic_eval = models.CharField(max_length = 20)
     median_time_to_pain_med = models.CharField(max_length = 20)
     head_ct_results = models.CharField(max_length = 20)
+    address_from_google = models.CharField(max_length = 200)
+    latitude = models.CharField(max_length=20)
+    longitude = models.CharField(max_length=20)
     def __unicode__(self):
         return self.hospital_name
 

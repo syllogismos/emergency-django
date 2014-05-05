@@ -6,6 +6,8 @@ from emergency.api import HospitalResource
 from emergency.api import UserResource
 from emergency.api import CheckInResource 
 
+from emergency import views
+
 from tastypie.api import Api
 
 from django.contrib import admin
@@ -20,7 +22,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'erscout.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', views.index, name="index"), 
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('two_factor.urls', 'two_factor')),
     url(r'^accounts/logout/$', RedirectView.as_view(url='/admin/logout/')),

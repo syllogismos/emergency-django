@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://getbootstrap.com/examples/cover/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+
+    <title>Checkin to a nearest Hospital</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css"></style><style id="holderjs-style" type="text/css"></style></head>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRuK7q0LbIkhjrs3EC7OMw_OBhYm_N3wQ&sensor=false">
+  </script>
+  <script src="./static/emergency/map.js"></script>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">ERScout</h3>
+              <ul class="nav nav-tabs pull-right">  <!-- change the class masthead-nav if you prefer it instead of nav-tabs pull-right -->
+                <li class=""><a href="#home" data-toggle="tab">Home</a></li>
+                <li><a href="#apps" data-toggle="tab">Apps</a></li>
+                <!--<li class="dropdown">
+                  <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                    Apps
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#ios">iOS</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#android">Android</a></li>
+                  </ul>
+                </li>-->
+                <li><a href="#contact" data-toggle="tab">Contact</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                  <div class="inner cover row" >
+                    <h2 class="cover-heading col-xs-12">Checkin to a hospital near you.</h2>
+                    <div id="map-canvas" class="col-xs-12" style="bottom:5px; height:400px"></div>
+                    <p class="">
+                    <!--<a href="#apps" class="btn btn-default col-xs-4 col-xs-offset-4" style="text-align:center"><span class="glyphicon glyphicon-phone"></span> Download iOS, Android App </a>-->
+                      <a href="#apps" class="btn btn-default col-xs-4 col-xs-offset-4" style="text-align:center">Download iOS, Android App</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="tab-pane" id="apps">
+                </div>
+                <div class="tab-pane" id="contact">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Emergency Hospital checkin App by ERScout.</p>
+            </div>
+          </div>
+
+          <!--<div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+          </div>-->
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./static/emergency/jquery.min.js"></script>
+    <script src="./static/emergency/bootstrap.min.js"></script>
+    <script src="./static/emergency/docs.min.js"></script>
+
+</body>
+</html>
+

@@ -6,8 +6,8 @@ from geopy.geocoders import GoogleV3
 geolocator = GoogleV3()
 
 
-fi = open('edtfinal.csv', 'r')
-fo = open('edtfinal_location.csv', 'w')
+fi = open('remainedt.csv', 'r')
+fo = open('remain_edtfinal_location.csv', 'w')
 fi_csv = csv.reader(fi)
 fo_csv = csv.writer(fo)
 

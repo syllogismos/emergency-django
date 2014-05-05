@@ -19,7 +19,7 @@ class UserResource(ModelResource):
 	filtering = {
 	    'username': ALL,
 	}
-        authentication = SessionAuthentication()
+        #authentication = SessionAuthentication()
 
 
 class HospitalResource(ModelResource):
@@ -27,7 +27,7 @@ class HospitalResource(ModelResource):
     class Meta:
 	queryset = Hospital.objects.all()
 	resource_name = 'hospital'
-        authentication = SessionAuthentication()
+        #authentication = SessionAuthentication()
 	filtering = {
 	    'hospital_admin' : ALL_WITH_RELATIONS,
 	    'state': ['exact'],
@@ -44,7 +44,7 @@ class CheckInResource(ModelResource):
     class Meta:
  	queryset = Check_in.objects.all()
  	resource_name = 'check_in'
- 	authentication = SessionAuthentication()
+ 	#authentication = SessionAuthentication()
         filtering = {
             'hospital_admin' : ['exact']
         }

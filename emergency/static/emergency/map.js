@@ -82,7 +82,7 @@ function addMarker(item, map){
   marker = new google.maps.Marker({
     position: new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)), 
     map: map,
-    icon: "static/emergency/blue-dot-state.png"});
+    icon: "static/emergency/plus-icon.png"});
   marker.setAnimation(google.maps.Animation.DROP);
   markersArray.push(marker);
 }

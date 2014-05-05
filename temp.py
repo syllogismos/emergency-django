@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 def populate():
     defaultUser = User.objects.get(pk=1)
-    edt = open('edtfinal_location.csv', 'r')
+    edt = open('remain_edtfinal_location_2.csv', 'r')
     edtcsv = csv.reader(edt)
     header = edtcsv.next()
     try:

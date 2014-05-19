@@ -70,7 +70,7 @@ function populateNearbyHospitals(coords, map) {
 }
 
 function getNearbyHospitals(city, map){
-  var erScoutHospitalsQuery = "http://ec2-54-196-92-53.compute-1.amazonaws.com:8000/api/v1/hospital/?limit=0&state="+city;
+  var erScoutHospitalsQuery = "/api/v1/hospital/?limit=0&state="+city;
   hospitalGetRequest = $.ajax({
     url: erScoutHospitalsQuery,
     type: 'GET',

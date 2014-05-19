@@ -7,27 +7,30 @@ var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
 var eureka = new google.maps.LatLng(40.78376890000001,-124.1422455);
 var los_angeles = new google.maps.LatLng(34.0695831, -118.2634431);
 var browserSupportFlag =  new Boolean();
-var markersArray = []
+var mainMarker;
+var markersArray = [];
+var infoWindowsArray = [];
 function initialize() {
   var myOptions = {
-    zoom: 12,
+    zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: los_angeles
   };
   var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-  marker = new google.maps.Marker({
-    position: los_angeles, 
-    map: map,
-    icon: "static/emergency/you-dot2.png"});
-  marker.setAnimation(google.maps.Animation.BOUNCE);
 
   // Try W3C Geolocation (Preferred)
   if(navigator.geolocation) {
     browserSupportFlag = true;
     navigator.geolocation.getCurrentPosition(function(position) {
       initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      initialLocation = los_angeles;
+      //initialLocation = newyork;
       map.setCenter(initialLocation);
+      mainMarker = new google.maps.Marker({
+        position: initialLocation, 
+        map: map,
+        title: "Your Location.",
+        icon: "static/emergency/you-dot2.png"});
+      mainMarker.setAnimation(google.maps.Animation.BOUNCE);
       populateNearbyHospitals(initialLocation, map);
     }, function() {
       handleNoGeolocation(browserSupportFlag);
@@ -54,20 +57,20 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function populateNearbyHospitals(coords, map) {
-  googleGeoCodingQuery = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+coords.lat()+","+coords.lng()+"&sensor=false&key=AIzaSyDRuK7q0LbIkhjrs3EC7OMw_OBhYm_N3wQ&result_type=postal_code|locality";
+  googleGeoCodingQuery = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+coords.lat()+","+coords.lng()+"&sensor=false&key=AIzaSyDRuK7q0LbIkhjrs3EC7OMw_OBhYm_N3wQ&result_type=administrative_area_level_1";
   geoCodingRequest = $.ajax({
     url: googleGeoCodingQuery,
     type: 'GET',
     dataType: 'json',
   }).done(function (data){
-    var locality = data.results[0].address_components[0]['long_name'];
+    var locality = data.results[0].address_components[0]['short_name'];
     locality = locality.toUpperCase();
     getNearbyHospitals(locality, map);
   });
 }
 
 function getNearbyHospitals(city, map){
-  var erScoutHospitalsQuery = "http://ec2-54-196-92-53.compute-1.amazonaws.com:8000/api/v1/hospital/?city=LOS%20ANGELES";
+  var erScoutHospitalsQuery = "http://ec2-54-196-92-53.compute-1.amazonaws.com:8000/api/v1/hospital/?limit=0&state="+city;
   hospitalGetRequest = $.ajax({
     url: erScoutHospitalsQuery,
     type: 'GET',
@@ -75,16 +78,26 @@ function getNearbyHospitals(city, map){
   }).done(function (data){
     var hospitals = data.objects;
     $.each(hospitals, function(i, item) { addMarker(item, map); });
+    mainMarker.setAnimation(google.maps.Animation.DROP);
   });
 }
 
 function addMarker(item, map){
-  marker = new google.maps.Marker({
+  var marker = new google.maps.Marker({
     position: new google.maps.LatLng(parseFloat(item.latitude), parseFloat(item.longitude)), 
     map: map,
+    title : item.hospital_name,
     icon: "static/emergency/plus-icon.png"});
   marker.setAnimation(google.maps.Animation.DROP);
+  var contentString = '<div class="infoWindow">'+item.hospital_name+'</div>';
+  var infoWindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.open(map, marker);
+  });
   markersArray.push(marker);
+  infoWindowsArray.push(infoWindow);
 }
 
 var content = '<div id="hospitalContent"> <h1 id="hospitalName">NewYork State Hospital</h1> <p> Addr: askdjfksdja </p> <p> askdfjasdk </p> <p> Ph: 253190 </p> <p> email: asdfkajds@aksdfj </p> </div>'

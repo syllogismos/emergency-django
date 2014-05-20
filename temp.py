@@ -8,9 +8,9 @@ from django.contrib.auth.models import User
 
 
 
-def populate():
+def populate_from_file(loc): # loc is file location, edtfinal_location.csv and remain_edtfinal_location.csv
     defaultUser = User.objects.get(pk=1)
-    edt = open('remain_edtfinal_location_2.csv', 'r')
+    edt = open(loc, 'r')
     edtcsv = csv.reader(edt)
     header = edtcsv.next()
     try:
@@ -41,3 +41,7 @@ def populate():
     except:
         pass
     return
+
+def populate():
+    populate_from_file('edtfinal_location.csv')
+    populate_from_file('remain_edtfinal_location_2.csv')

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://getbootstrap.com/examples/cover/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+
+    <title>Checkin to a nearest Hospital</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./static/emergency/map.css" rel="stylesheet">
+    <link href="./static/emergency/new.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css"></style><style id="holderjs-style" type="text/css"></style></head>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRuK7q0LbIkhjrs3EC7OMw_OBhYm_N3wQ&sensor=false">
+  </script>
+  <script src="./static/emergency/map.js"></script>
+
+  <body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="navbar-wrapper">
+                <div class="container">
+                    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                                        class="icon-bar"></span><span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">ERScout</a>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#">Home</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="/admin">Admin</a></li>
+                                    <!--<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
+                                        <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg"
+                                                                alt="Alternate Text" class="img-responsive" />
+                                                            <p class="text-center small">
+                                                                <a href="#">Change Photo</a></p>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <span>Bhaumik Patel</span>
+                                                            <p class="text-muted small">
+                                                                mail@gmail.com</p>
+                                                            <div class="divider">
+                                                            </div>
+                                                            <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="navbar-footer">
+                                                    <div class="navbar-footer-content">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a href="http://www.jquery2dotnet.com" class="btn btn-default btn-sm pull-right">Sign Out</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+						</li>-->
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+			    <div id="map-canvas" style="height: 500px; left: -15px">
+		            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./static/emergency/jquery.min.js"></script>
+    <script src="./static/emergency/bootstrap.min.js"></script>
+    <script src="./static/emergency/docs.min.js"></script>
+
+</body>
+</html>
+

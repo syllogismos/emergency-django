@@ -1,5 +1,6 @@
 #map-canvas {
     color: #000;
+    text-shadow: none;
 }
 
 #map-canvas p{

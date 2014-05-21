@@ -12,7 +12,7 @@ var markersArray = [];
 var infoWindowsArray = [];
 function initialize() {
   var myOptions = {
-    zoom: 14,
+    zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: los_angeles
   };
@@ -89,7 +89,7 @@ function addMarker(item, map){
     title : item.hospital_name,
     icon: "static/emergency/plus-icon.png"});
   marker.setAnimation(google.maps.Animation.DROP);
-  var contentString = '<div class="infoWindow">'+item.hospital_name+'</div>';
+  var contentString = '<div class="infoWindow"><p><strong>'+item.hospital_name+'</strong></p><p><strong>Phone No:</strong> '+item.phone_number+'</p><p><strong>Waiting Time: </strong>'+item.door_to_diagnostic_eval+' mins</p></div>';
   var infoWindow = new google.maps.InfoWindow({
     content: contentString,
   });

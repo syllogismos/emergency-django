@@ -1,0 +1,8 @@
+#map-canvas {
+    color: #000;
+}
+
+#map-canvas p{
+    margin-bottom: 1px;
+    text-align: left;
+}

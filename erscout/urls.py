@@ -28,4 +28,18 @@ urlpatterns = patterns('',
     url(r'', include('two_factor.urls', 'two_factor')),
     url(r'^accounts/logout/$', RedirectView.as_view(url='/admin/logout/')),
     url(r'^api/', include(v1_api.urls)),
+
+    url(r'^user/password/reset/$',
+        'django.contrib.auth.views.password_reset',
+        {'post_reset_redirect': '/user/password/reset/done/'},
+        name = 'password_reset'),
+    url(r'^user/password/reset/done/$',
+        'django.contrib.auth.views.password_reset_done'),
+    url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(P<token>.+)/$',
+        'django.contrib.auth.views.password_reset_confirm',
+        {'post_reset_redirect': '/user/password/done/'},
+        name='password_reset_confirm'),
+    url(r'^user/password/done/$',
+        'django.contrib.auth.views.password_reset_complete'),
+
 )

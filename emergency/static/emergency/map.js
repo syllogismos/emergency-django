@@ -8,15 +8,17 @@ var eureka = new google.maps.LatLng(40.78376890000001,-124.1422455);
 var los_angeles = new google.maps.LatLng(34.0695831, -118.2634431);
 var browserSupportFlag =  new Boolean();
 var mainMarker;
+var states = [];
 var markersArray = [];
 var infoWindowsArray = [];
+var map;
 function initialize() {
   var myOptions = {
     zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: los_angeles
   };
-  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+  map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
   // Try W3C Geolocation (Preferred)
   if(navigator.geolocation) {
@@ -52,6 +54,9 @@ function initialize() {
     }
     map.setCenter(initialLocation);
   }
+  google.maps.event.addListener(map, 'dragend', function() {
+    populateNearbyHospitals(map.getCenter(), map);
+  });
 
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -65,7 +70,10 @@ function populateNearbyHospitals(coords, map) {
   }).done(function (data){
     var locality = data.results[0].address_components[0]['short_name'];
     locality = locality.toUpperCase();
-    getNearbyHospitals(locality, map);
+    if (states.indexOf(locality) == -1) {
+      states.push(locality);
+      getNearbyHospitals(locality, map);
+    }
   });
 }
 

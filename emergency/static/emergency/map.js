@@ -61,7 +61,38 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function populateNearbyHospitals(coords, map) {
+
+function populateNearbyHospitals(coords, map){
+  var lat = coords.lat();
+  var lng = coords.lng();
+  var lat1 = lat + 0.4;
+  var lat2 = lat - 0.4;
+  var lng1 = lng + 0.4;
+  var lng2 = lng - 0.4;
+  var lat11 = lat + 0.2;
+  var lat22 = lat - 0.2;
+  var lng11 = lng + 0.2;
+  var lng22 = lng - 0.2;
+  var l1 = new google.maps.LatLng(lat1, lng);
+  var l2 = new google.maps.LatLng(lat2, lng);
+  var l3 = new google.maps.LatLng(lat, lng1);
+  var l4 = new google.maps.LatLng(lat, lng2);
+  var l5 = new google.maps.LatLng(lat11, lng11);
+  var l6 = new google.maps.LatLng(lat11, lng22);
+  var l7 = new google.maps.LatLng(lat22, lng11);
+  var l8 = new google.maps.LatLng(lat22, lng22);
+  populateNearbyHospitalsOfSingleLocation(l1, map); 
+  populateNearbyHospitalsOfSingleLocation(l2, map); 
+  populateNearbyHospitalsOfSingleLocation(l3, map); 
+  populateNearbyHospitalsOfSingleLocation(l4, map); 
+  populateNearbyHospitalsOfSingleLocation(l5, map); 
+  populateNearbyHospitalsOfSingleLocation(l6, map); 
+  populateNearbyHospitalsOfSingleLocation(l7, map); 
+  populateNearbyHospitalsOfSingleLocation(l8, map); 
+  //omgf i'm not proud of myself
+}
+
+function populateNearbyHospitalsOfSingleLocation(coords, map) {
   googleGeoCodingQuery = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+coords.lat()+","+coords.lng()+"&sensor=false&key=AIzaSyDRuK7q0LbIkhjrs3EC7OMw_OBhYm_N3wQ&result_type=administrative_area_level_1";
   geoCodingRequest = $.ajax({
     url: googleGeoCodingQuery,

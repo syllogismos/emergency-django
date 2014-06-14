@@ -1,3 +1,12 @@
+       ,
+     -   \O                                     ,  .-.___
+   -     /\                                   O/  /xx\XXX\
+  -   __/\ `                                  /\  |xx|XXX|
+     `    \, ()                              ` << |xx|XXX|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
 ERscout
 =======
 
@@ -123,6 +132,7 @@ First Deliverable Update:
 Here is the url:
 
 http://ec2-54-196-92-53.compute-1.amazonaws.com:8000/account/login/
+** doesn't work anymore, took it offline
  
 web admin: username: ec2-user, pwd: test
 
